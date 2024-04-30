@@ -10,6 +10,7 @@ import com.somihmih.entry.AdmissionEntry;
 import javafx.event.EventHandler;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import com.somihmih.db.ClinicDbService;
 import com.somihmih.er.entity.Admission;
