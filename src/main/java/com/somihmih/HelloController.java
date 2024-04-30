@@ -227,7 +227,9 @@ public class HelloController {
             admissionsList.add(admission); // нужен ли нам грид старой версии?
             try {
                 Patient currentPatient = dbService.getPatient(admission.getPatientId());
-                String title = (currentPatient != null) ? currentPatient.getName() : "Reserved time";
+                String title = (currentPatient != null)
+                        ? currentPatient.getName() + ", tel: " + currentPatient.getPhoneNumber()
+                        : "Reserved time";
 
                 AdmissionEntry admissionEntry = new AdmissionEntry(admission, title);
                 admissionEntry.setCalendar(calendar);
