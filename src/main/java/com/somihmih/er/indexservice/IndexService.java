@@ -15,7 +15,7 @@ public class IndexService {
     protected int count = 0;
 
     private int currentMaxIndex = 0;
-    private String fileName;
+    private final String fileName;
 
     public IndexService(String fileName) {
         this.fileName = fileName;
