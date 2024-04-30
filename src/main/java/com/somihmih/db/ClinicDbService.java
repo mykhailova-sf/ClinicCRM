@@ -17,13 +17,7 @@ public class ClinicDbService {
     }
 
     public void insertPatient(String name, String phone) {
-        insertPatient(new Patient(name, phone));
-    }
-
-    private void insertPatient(Patient patient) {
-        System.out.println("Я буду сохранять пациента " + patient.getName());
-        dbms.insertPatient(patient);
-        System.out.println("ОК - Пациент сохранен");
+        dbms.insertPatient(new Patient(name, phone));
     }
 
     public Patient[] getAllActivePatients() {

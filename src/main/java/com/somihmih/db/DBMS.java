@@ -179,8 +179,6 @@ public class DBMS {
         admissionIndexService.saveToFile();
 
         saveAdmission(admission);
-
-        // TODO добавить обновление ссылки на следующий
     }
 
     public void clearDb() {
