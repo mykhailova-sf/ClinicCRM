@@ -223,10 +223,13 @@ public class HelloController {
 
         calendarView.getCalendarSources().add(calendarSource);
 
-        for (Admission admission : admissions) { // переделать на addAll
-            admissionsList.add(admission);
+        for (Admission admission : admissions) {
+            admissionsList.add(admission); // нужен ли нам грид старой версии?
             try {
-                AdmissionEntry admissionEntry = new AdmissionEntry(admission);
+                Patient currentPatient = dbService.getPatient(admission.getPatientId());
+                String title = (currentPatient != null) ? currentPatient.getName() : "Reserved time";
+
+                AdmissionEntry admissionEntry = new AdmissionEntry(admission, title);
                 admissionEntry.setCalendar(calendar);
             } catch (Exception e) {
                 System.out.println("updateAdmissionsList error, admission: " + admission);

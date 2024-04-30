@@ -200,7 +200,7 @@ public class ClinicDbService {
         dbms.deletePatientWithAdmissions(patient);
     }
 
-    private Patient getPatient(int id) {
+    public Patient getPatient(int id) {
         Patient patient = dbms.getPatient(id);
         if (patient == null) {
             System.out.println("Patient not found");

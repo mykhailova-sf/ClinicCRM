@@ -8,8 +8,8 @@ import java.time.format.DateTimeFormatter;
 
 public class AdmissionEntry extends com.calendarfx.model.Entry<Admission> {
 
-    public AdmissionEntry(Admission admission) {
-        super(admission.toString());
+    public AdmissionEntry(Admission admission, String title) {
+        super(title);
 
         LocalDate date = stringToDate(
                 admission.getDate().substring(0, 10)
