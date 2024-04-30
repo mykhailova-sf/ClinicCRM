@@ -35,7 +35,6 @@ public class IndexService {
                 if (indexes[count].getEntityId() > currentMaxIndex) {
                     currentMaxIndex = indexes[count].getEntityId();
                 }
-                System.out.println("Прочитан индекс : (id: " + indexes[count].getEntityId() + ", position: " + indexes[count].getPos() + ")");
                 count++;
             }
         } catch (IOException e) {

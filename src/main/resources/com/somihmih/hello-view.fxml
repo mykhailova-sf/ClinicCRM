@@ -39,9 +39,6 @@
             </items>
             <items>
                 <Menu text="Admission">
-                    <items>
-                        <MenuItem onAction="#deleteAdmission" text="Delete" />
-                    </items>
                 </Menu>
             </items>
           </Menu>
@@ -134,28 +131,6 @@
               </VBox>
       </children>
        </HBox>
-      <ScrollPane fx:id="scrollGrid1" prefHeight="200.0" prefWidth="200.0">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TableView fx:id="admissionsTable" items="${controller.admissionsList}" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                     <columns>
-                        <TableColumn text="Id">
-                           <cellValueFactory>
-                              <PropertyValueFactory property="id" />
-                           </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn text="Date">
-                           <cellValueFactory>
-                              <PropertyValueFactory property="date" />
-                           </cellValueFactory>
-                        </TableColumn>
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-   </children>
+      </children>
     <CalendarView fx:id="calendarView" prefWidth="400" prefHeight="500"/>
 </VBox>

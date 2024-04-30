@@ -11,7 +11,7 @@ import com.somihmih.er.utils.TitleBuilder;
 import javafx.event.EventHandler;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import com.somihmih.db.ClinicDbService;
 import com.somihmih.er.entity.Admission;
@@ -38,9 +38,6 @@ public class HelloController {
 
     @FXML
     private TableView patientsTable;
-
-    @FXML
-    private TableView admissionsTable;
 
     @FXML
     private CalendarView calendarView;
@@ -80,7 +77,6 @@ public class HelloController {
                 System.out.println("oldTitleParts: " + oldTitleParts[0]);
                 System.out.println("titleParts: " + titleParts[0]);
                 if (titleParts[0].equals(oldTitleParts[0])) {
-                    System.out.println(" EEEE");
                     Admission admission = getAdmissionFrom(entry, admissionEntry.getAdmission().getPatientId());
                     admission.setDescription(
                             titleParts.length > 1 ? titleParts[1].trim() : ""
@@ -92,8 +88,7 @@ public class HelloController {
             if (calendarEvent.getEventType().equals(CalendarEvent.ENTRY_CALENDAR_CHANGED)) {
                 if (calendarEvent.isEntryRemoved() && entry instanceof AdmissionEntry admissionEntry) {
                     Admission admission = admissionEntry.getAdmission();
-                    int id = admission.getId();
-                    dbService.deleteAdmission(id, admission.getPatientId());
+                    dbService.deleteAdmission(admission.getId(), admission.getPatientId());
                 } else if (calendarEvent.isEntryAdded() && !(entry instanceof AdmissionEntry)) {
                     try {
                         Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
@@ -283,24 +278,6 @@ public class HelloController {
 
         readPatientsFromDb();
         updatePatientsList();
-        updateAdmissionsList();
-    }
-
-    @FXML
-    protected void deleteAdmission() {
-        Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
-        if (patient == null) {
-            System.out.println("Выбери пациента для удаления его записи!");
-            return;
-        }
-
-        Admission admission = (Admission) admissionsTable.getSelectionModel().getSelectedItem();
-        if (admission == null) {
-            System.out.println("Выбери Admission для удаления!");
-            return;
-        }
-
-        dbService.deleteAdmission(admission.getId(), patient.getId());
         updateAdmissionsList();
     }
 
