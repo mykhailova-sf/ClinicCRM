@@ -85,21 +85,24 @@ public class HelloController {
                     int id = admission.getId();
                     dbService.deleteAdmission(id, admission.getPatientId());
                 } else {
-                    Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
-                    if (patient == null) {
-                        System.out.println("Пациент не выбран");
-                        return;
-                    }
+
                     Admission admission;
                     try {
-                        admission = getAdmissionFrom(entry, patient);
+
                         if (calendarEvent.isEntryAdded() && !(entry instanceof AdmissionEntry)) {
                             System.out.println(" -- Добавление");
+                            Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
+                            if (patient == null) {
+                                System.out.println("Пациент не выбран");
+                                return;
+                            }
+                            admission = getAdmissionFrom(entry, patient.getId());
                             dbService.insertAdmission(patient.getId(), admission);
                             updateAdmissionsList();
 
                         } else if (!calendarEvent.isEntryAdded() && entry instanceof AdmissionEntry) {
                             System.out.println(" -- Обновление");
+                            admission = getAdmissionFrom(entry, ((AdmissionEntry) entry).getAdmission().getPatientId());
                             dbService.updateAdmission(admission);
                             updateAdmissionsList();
                         } else {
@@ -132,7 +135,7 @@ public class HelloController {
         });
     }
 
-    private Admission getAdmissionFrom(Entry<?> entry, Patient patient) {
+    private Admission getAdmissionFrom(Entry<?> entry, int patientId) {
         LocalDate startDate = entry.getStartDate();
         int startDayOfMonth = startDate.getDayOfMonth();
         int endDayOfMonth = entry.getEndDate().getDayOfMonth();
@@ -154,10 +157,10 @@ public class HelloController {
         System.out.println("Time: " + formattedDateTime);
         if (entry.getUserObject() instanceof Admission) {
             int id = ((Admission) entry.getUserObject()).getId();
-            return new Admission(id, formattedDateTime, patient.getId());
+            return new Admission(id, formattedDateTime, patientId);
         }
 
-        return new Admission(formattedDateTime, patient.getId());
+        return new Admission(formattedDateTime, patientId);
     }
 
     private void onSelectPatient(Patient selectedPatient) {
