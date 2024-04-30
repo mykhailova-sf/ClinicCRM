@@ -177,6 +177,7 @@ public class HelloController {
 
     @FXML
     protected void onShowAllAdmissions() {
+        patientsTable.getSelectionModel().clearSelection();
         updateAdmissionsList();
     }
 
