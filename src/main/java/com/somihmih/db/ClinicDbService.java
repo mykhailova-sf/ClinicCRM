@@ -43,7 +43,11 @@ public class ClinicDbService {
                 .toArray(Admission[]::new);
     }
 
-    public Admission[] getActivePatientAdmissions(Patient patient) {
+    public Admission[] getActivePatientAdmissions(int patientId) {
+        Patient patient = getPatient(patientId);
+        if (patient == null) {
+            throw new IllegalArgumentException("Отсутсвует пацик с ID: " + patientId);
+        }
         if (patient.getFirstAdmissionId() == -1) {
             return new Admission[]{};
         }

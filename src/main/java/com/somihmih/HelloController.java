@@ -210,7 +210,7 @@ public class HelloController {
         if (patient == null) {
             readAllAdmissionsFromDb();
         } else {
-            admissions = dbService.getActivePatientAdmissions(patient);
+            admissions = dbService.getActivePatientAdmissions(patient.getId());
         }
 
         admissionsList.clear();
