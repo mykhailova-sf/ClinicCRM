@@ -94,12 +94,6 @@ public class Patient implements Entity {
         }
     }
 
-    private String normalizeToMaxLen(String value, int maxLen) {
-        return (value.length() < maxLen)
-                ? value + " ".repeat(maxLen - value.length())
-                : value.substring(0, maxLen);
-    }
-
     public void loadYourselfFrom(DataInputStream inputStream) {
         try {
             id = inputStream.readInt();

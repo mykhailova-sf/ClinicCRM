@@ -9,6 +9,7 @@ public class Admission implements Entity{
     public static final int ID_SIZE = Integer.BYTES;
 //    public static final int MAX_DATE_LEN = 8;
     public static final int MAX_DATE_LEN = 22;
+    public static final int MAX_DESCRIPTION_LEN = 50;
     public static final int PATIENT_ID_LEN = Integer.BYTES;
 
     public static final int STATUS_SIZE = 1;
@@ -22,6 +23,7 @@ public class Admission implements Entity{
     private int id = -1;
     private String date;
     private int patientId = -1;
+    private String description = "";
     private int nextAdId = -1;
 
     public Admission() {
@@ -96,6 +98,10 @@ public class Admission implements Entity{
             outputStream.writeInt(patientId);
             outputStream.writeInt(nextAdId);
             outputStream.writeBoolean(deleted);
+            outputStream.write(
+                    normalizeToMaxLen(this.description, MAX_DESCRIPTION_LEN)
+                   .getBytes("UTF-16BE")
+            );
         } catch (IOException e) {
             System.out.println("Error  " + e.getMessage());
             throw new RuntimeException(e);
@@ -112,6 +118,10 @@ public class Admission implements Entity{
             patientId = inputStream.readInt();
             nextAdId = inputStream.readInt();
             deleted = inputStream.readBoolean();
+
+            byte[] descriptionAsBytes = new byte[MAX_DESCRIPTION_LEN * 2];
+            inputStream.readFully(descriptionAsBytes);
+            description = new String(descriptionAsBytes, "UTF-16");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -139,6 +149,15 @@ public class Admission implements Entity{
                 + MAX_DATE_LEN * 2
                 + PATIENT_ID_LEN
                 + ID_SIZE
-                + 1;
+                + 1
+                + MAX_DESCRIPTION_LEN * 2;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

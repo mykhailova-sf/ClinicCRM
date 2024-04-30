@@ -17,4 +17,9 @@ public interface Entity {
 
     boolean isDeleted();
 
+    default String normalizeToMaxLen(String value, int maxLen) {
+        return (value.length() < maxLen)
+                ? value + " ".repeat(maxLen - value.length())
+                : value.substring(0, maxLen);
+    }
 }
