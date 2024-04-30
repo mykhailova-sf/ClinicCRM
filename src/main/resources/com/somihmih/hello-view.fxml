@@ -132,5 +132,5 @@
       </children>
        </HBox>
       </children>
-    <CalendarView fx:id="calendarView" prefWidth="400" prefHeight="500"/>
+    <CalendarView fx:id="calendarView" prefWidth="400" prefHeight="700"/>
 </VBox>
