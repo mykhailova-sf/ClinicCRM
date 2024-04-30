@@ -12,7 +12,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import com.calendarfx.view.CalendarView?>
 
-<VBox alignment="TOP_CENTER" prefHeight="1075.0" prefWidth="1138.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.somihmih.HelloController">
+<VBox alignment="TOP_CENTER" prefHeight="1075.0" prefWidth="1138.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.somihmih.UiController">
     <padding>
         <Insets left="5.0" right="5.0" />
     </padding>

@@ -147,7 +147,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.somihmih/com.somihmih.HelloApplication</mainClass>
+                            <mainClass>com.somihmih/com.somihmih.ClinicCrm</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
