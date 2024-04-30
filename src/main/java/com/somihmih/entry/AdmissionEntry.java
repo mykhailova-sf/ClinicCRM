@@ -1,6 +1,5 @@
 package com.somihmih.entry;
 
-import com.calendarfx.model.Entry;
 import com.somihmih.er.entity.Admission;
 
 import java.time.LocalDate;
