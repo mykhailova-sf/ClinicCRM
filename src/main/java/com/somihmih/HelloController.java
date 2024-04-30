@@ -7,6 +7,7 @@ import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.view.CalendarView;
 import com.somihmih.entry.AdmissionEntry;
 
+import com.somihmih.er.utils.TitleBuilder;
 import javafx.event.EventHandler;
 
 import java.time.LocalDate;
@@ -69,6 +70,24 @@ public class HelloController {
             ) {
                 Admission admission = getAdmissionFrom(entry, admissionEntry.getAdmission().getPatientId());
                 dbService.updateAdmission(admission);
+            }
+            if (calendarEvent.getEventType().equals(CalendarEvent.ENTRY_TITLE_CHANGED)
+                    && (entry instanceof AdmissionEntry admissionEntry)
+                    && admissionEntry.getTitle().contains(";")
+            ) {
+                String[] titleParts = admissionEntry.getTitle().split(";");
+                String[] oldTitleParts = calendarEvent.getOldText().split(";");
+                System.out.println("oldTitleParts: " + oldTitleParts[0]);
+                System.out.println("titleParts: " + titleParts[0]);
+                if (titleParts[0].equals(oldTitleParts[0])) {
+                    System.out.println(" EEEE");
+                    Admission admission = getAdmissionFrom(entry, admissionEntry.getAdmission().getPatientId());
+                    admission.setDescription(
+                            titleParts.length > 1 ? titleParts[1].trim() : ""
+                    );
+                    dbService.updateAdmission(admission);
+                }
+
             }
             if (calendarEvent.getEventType().equals(CalendarEvent.ENTRY_CALENDAR_CHANGED)) {
                 if (calendarEvent.isEntryRemoved() && entry instanceof AdmissionEntry admissionEntry) {
@@ -208,11 +227,9 @@ public class HelloController {
             admissionsList.add(admission); // нужен ли нам грид старой версии?
             try {
                 Patient currentPatient = dbService.getPatient(admission.getPatientId());
-                String title = (currentPatient != null)
-                        ? currentPatient.getName() + ", tel: " + currentPatient.getPhoneNumber()
-                        : "Reserved time";
+                String title = new TitleBuilder().buildTitle(admission, currentPatient);
 
-                AdmissionEntry admissionEntry = new AdmissionEntry(admission, title);
+                AdmissionEntry admissionEntry = new AdmissionEntry(admission, title.trim());
                 admissionEntry.setCalendar(calendar);
             } catch (Exception e) {
                 System.out.println("updateAdmissionsList error, admission: " + admission);

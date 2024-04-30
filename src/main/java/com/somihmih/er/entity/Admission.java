@@ -48,7 +48,10 @@ public class Admission implements Entity{
 
     @Override
     public Admission getClone() {
-        return new Admission(id, date, patientId, nextAdId, deleted);
+        Admission admission = new Admission(id, date, patientId, nextAdId, deleted);
+        admission.setDescription(description);
+
+        return admission;
     }
 
 
@@ -135,6 +138,7 @@ public class Admission implements Entity{
                 ", price:" + patientId +
                 ", nextAdId:" + nextAdId +
                 ((isDeleted()) ? ", DELETED" : "") +
+                ", description:" + description.trim() +
                 ')';
     }
 
