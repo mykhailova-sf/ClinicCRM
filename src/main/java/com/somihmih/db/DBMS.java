@@ -74,10 +74,10 @@ public class DBMS {
         saveEntityToPositionIn(patient, position, PATIENTS);
     }
 
-    private void saveEntityToPositionIn(Entity patient, int position, String fileName) {
+    private void saveEntityToPositionIn(Entity entity, int position, String fileName) {
         try (RandomAccessFile file = new RandomAccessFile(fileName, "rw")) {
-            file.seek(position * patient.getSizeInBytes());
-            patient.saveYourselfTo(file);
+            file.seek(position * entity.getSizeInBytes());
+            entity.saveYourselfTo(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
