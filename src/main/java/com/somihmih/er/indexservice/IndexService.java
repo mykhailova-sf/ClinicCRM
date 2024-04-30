@@ -10,9 +10,9 @@ public class IndexService {
 
     public static final int MAX_COUNT = 100;
 
-    private Index[] indexes = new Index[MAX_COUNT];
+    protected Index[] indexes = new Index[MAX_COUNT];
 
-    private int count = 0;
+    protected int count = 0;
 
     private int currentMaxIndex = 0;
     private String fileName;

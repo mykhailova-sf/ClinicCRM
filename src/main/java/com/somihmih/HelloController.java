@@ -5,6 +5,7 @@ import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.view.CalendarView;
+import com.somihmih.db.DBMS;
 import com.somihmih.entry.AdmissionEntry;
 
 import com.somihmih.er.utils.TitleBuilder;
@@ -55,7 +56,7 @@ public class HelloController {
     private ClinicDbService dbService;
     @FXML
     public void initialize() {
-        this.dbService = new ClinicDbService();
+        this.dbService = new ClinicDbService(new DBMS());
         readPatientsFromDb();
         updatePatientsList();
 

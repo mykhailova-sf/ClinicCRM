@@ -10,7 +10,11 @@ import java.util.Arrays;
 
 public class ClinicDbService {
 
-    protected final DBMS dbms = new DBMS();
+    private final DBMS dbms;
+
+    public ClinicDbService(DBMS dbms) {
+        this.dbms = dbms;
+    }
 
     public void insertPatient(String name, String phone) {
         insertPatient(new Patient(name, phone));
@@ -56,12 +60,6 @@ public class ClinicDbService {
     public void reindexPatients() {
         System.out.println("Переиндексация пациентов...");
         dbms.reindexPatients();
-    }
-
-    private static void showIndices(Index[] indices) {
-        for (Index index : indices) {
-            System.out.println(index);
-        }
     }
 
     public void saveIndices() {
