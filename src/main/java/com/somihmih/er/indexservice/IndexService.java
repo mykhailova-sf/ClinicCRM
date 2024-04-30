@@ -44,10 +44,10 @@ public class IndexService {
 
     public void recreateIndexFile(Index[] indices) {
         try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(fileName))) {
-            for (int i = 0; i < indices.length; i++) {
-                outputStream.writeInt(indices[i].getEntityId());
-                outputStream.writeInt(indices[i].getPos());
-                outputStream.writeBoolean(indices[i].isDeleted());
+            for (Index index : indices) {
+                outputStream.writeInt(index.getEntityId());
+                outputStream.writeInt(index.getPos());
+                outputStream.writeBoolean(index.isDeleted());
             }
         } catch (IOException e) {
             System.out.println("Ошибка при записи файл: " + e.getMessage());
