@@ -2,9 +2,6 @@ package com.somihmih.db;
 
 import com.somihmih.er.entity.Admission;
 import com.somihmih.er.entity.Patient;
-import com.somihmih.er.indexservice.Index;
-import com.somihmih.er.entity.Entity;
-import javafx.collections.ObservableList;
 
 import java.util.Arrays;
 

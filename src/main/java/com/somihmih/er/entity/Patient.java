@@ -17,15 +17,12 @@ public class Patient implements Entity {
     private int admissionId = -1;
     private boolean deleted = false;
 
-//    public final StringProperty pname = new SimpleStringProperty();
-
     public Patient() {
     }
 
     public Patient(int id, String name, String phoneNumber, int admissionId, boolean deleted) {
         this.id = id;
         this.name = name;
-//        pname.set(name);
         this.phoneNumber = phoneNumber;
         this.admissionId = admissionId;
         this.deleted = deleted;
@@ -33,36 +30,21 @@ public class Patient implements Entity {
 
     public Patient(String name, String phoneNumber) {
         this.name = name;
-//        pname.set(name);
         this.phoneNumber = phoneNumber;
     }
 
     public Patient(int id, String name, String phoneNumber) {
         this.id = id;
         this.name = name;
-//        pname.set(name);
         this.phoneNumber = phoneNumber;
     }
 
-    /*public final void setPname(final java.lang.String name) {
-        this.pnameProperty().set(name);
-    }*/
     @Override
     public int getId() {
         return id;
     }
 
-   /* public final StringProperty pnameProperty() {
-        System.out.println("---------------- pnameProperty");
-        return this.pname;
-    }*/
-    /*public final String getPname() {
-        System.out.println("---------------- get pnameProperty");
-        return this.pnameProperty().get();
-    }*/
-
     public String getName() {
-//        System.out.println("---------------- name");
         return name;
     }
 

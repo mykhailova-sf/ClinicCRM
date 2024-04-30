@@ -7,12 +7,9 @@ import java.io.IOException;
 public class Admission implements Entity{
 
     public static final int ID_SIZE = Integer.BYTES;
-//    public static final int MAX_DATE_LEN = 8;
     public static final int MAX_DATE_LEN = 22;
     public static final int MAX_DESCRIPTION_LEN = 50;
     public static final int PATIENT_ID_LEN = Integer.BYTES;
-
-    public static final int STATUS_SIZE = 1;
 
     public void markAsDeleted() {
         this.deleted = true;
@@ -45,7 +42,6 @@ public class Admission implements Entity{
         this(-1, date, patientId, -1, false);
     }
 
-
     @Override
     public Admission getClone() {
         Admission admission = new Admission(id, date, patientId, nextAdId, deleted);
@@ -53,7 +49,6 @@ public class Admission implements Entity{
 
         return admission;
     }
-
 
     @Override
     public int getId() {

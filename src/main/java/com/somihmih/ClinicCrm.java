@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -17,11 +16,6 @@ public class ClinicCrm extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-    }
-
-    @Override
-    public void stop(){
-        System.out.println("Stage is closing");
     }
 
     public static void main(String[] args) {
