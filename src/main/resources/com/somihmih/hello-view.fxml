@@ -55,6 +55,9 @@
               <MenuItem mnemonicParsing="false" onAction="#onReindex" text="Reindex All" />
             </items>
             <items>
+              <MenuItem mnemonicParsing="false" onAction="#onClearDb" text="Clear DB" />
+            </items>
+            <items>
               <MenuItem mnemonicParsing="false" onAction="#onExit" text="Exit" />
             </items>
           </Menu>

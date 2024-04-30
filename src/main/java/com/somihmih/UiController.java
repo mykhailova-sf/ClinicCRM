@@ -295,4 +295,11 @@ public class UiController {
         readPatientsFromDb();
         updatePatientsList();
     }
+
+    public void onClearDb() {
+        dbService.clearDb();
+        readPatientsFromDb();
+        updatePatientsList();
+        updateAdmissionsList();
+    }
 }
