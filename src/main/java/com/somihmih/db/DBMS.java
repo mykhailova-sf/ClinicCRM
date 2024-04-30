@@ -18,8 +18,8 @@ public class DBMS {
     public static final String ADMISSION_INDEXES = "./dbfiles/addmissionIndexes";
     public static final String PATIENTS_INDEXES = "./dbfiles/patientsIndexes";
 
-    private IndexService patientIndexService;
-    private IndexService admissionIndexService;
+    private final IndexService patientIndexService;
+    private final IndexService admissionIndexService;
     public DBMS() {
         patientIndexService = new IndexService(PATIENTS_INDEXES);
         admissionIndexService = new IndexService(ADMISSION_INDEXES);
