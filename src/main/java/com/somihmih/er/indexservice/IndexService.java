@@ -57,10 +57,6 @@ public class IndexService {
         loadIndexes();
     }
 
-    public Index[] getIndices() {
-        return Arrays.copyOfRange(indexes, 0, count);
-    }
-
     public void addIndex(Index index) {
         if (index.getPos() == count) {
             indexes[count++] = new Index(index.getEntityId(), index.getPos(), index.isDeleted());
@@ -68,7 +64,6 @@ public class IndexService {
             indexes[index.getPos()] = new Index(index.getEntityId(), index.getPos(), index.isDeleted());
         }
     }
-
 
     public int getNewId() {
         return ++currentMaxIndex;
@@ -82,13 +77,7 @@ public class IndexService {
             }
             i++;
         }
-        /*
-        for (Index index : indexes) {
-            if (index != null && index.isDeleted()) {
-                return new Index(getNewId(), index.getPos());
-            }
-        }
-       */
+
         return new Index(getNewId(), count);
     }
 

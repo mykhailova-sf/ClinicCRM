@@ -12,7 +12,6 @@ import javafx.event.EventHandler;
 import java.time.LocalDate;
 
 import com.somihmih.db.ClinicDbService;
-import com.somihmih.db.NewDbService;
 import com.somihmih.er.entity.Admission;
 import com.somihmih.er.entity.Patient;
 import javafx.application.Platform;
@@ -22,9 +21,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class HelloController {
-
-    @FXML
-    private Label patientId;
 
     @FXML
     private TextField name;
@@ -39,16 +35,10 @@ public class HelloController {
     private TextField phone;
 
     @FXML
-    private ListView list;
-
-    @FXML
     private TableView patientsTable;
 
     @FXML
     private TableView admissionsTable;
-
-    @FXML
-    private DatePicker calendar2;
 
     @FXML
     private CalendarView calendarView;
@@ -66,9 +56,7 @@ public class HelloController {
     private ClinicDbService dbService;
     @FXML
     public void initialize() {
-        this.dbService = new NewDbService(list);
-//        patientId.setText("");
-
+        this.dbService = new ClinicDbService();
         readPatientsFromDb();
         updatePatientsList();
 
@@ -303,16 +291,5 @@ public class HelloController {
         dbService.updatePatient(patient);
         readPatientsFromDb();
         updatePatientsList();
-    }
-
-    @FXML
-    private void handleDateSelection() {
-        // Получаем выбранную дату из DatePicker
-        String selectedDate = calendar2.getValue().toString();
-
-        // Выполняем необходимые действия с выбранной датой
-        System.out.println("Выбрана новая дата: " + selectedDate);
-
-        // TODO показать админы за дату
     }
 }

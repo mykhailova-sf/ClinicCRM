@@ -58,17 +58,6 @@ public class DBMS {
         return patients;
     }
 
-    /*
-
-    private static void writeEntityToFile(Entity entity, String fileName) {
-        try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(fileName, true))) {
-            entity.saveYourselfTo(outputStream);
-            System.out.println("Size: " + outputStream.size());
-        } catch (IOException exception) {
-            System.out.println("Ошибка при записи объекта в файл: " + exception.getMessage());
-        }
-    }*/
-
     public void savePatient(Patient patient) {
         int position = patientIndexService.getPosition(patient.getId());
         saveEntityToPositionIn(patient, position, PATIENTS);
@@ -86,12 +75,6 @@ public class DBMS {
     public void saveAdmission(Admission admission) {
         int position = admissionIndexService.getPosition(admission.getId());
         saveEntityToPositionIn(admission, position, ADMISSIONS);
-        /*try (RandomAccessFile file = new RandomAccessFile(ADMISSIONS, "rw")) {
-            file.seek((long) position * (long) admission.getSizeInBytes());
-            admission.saveYourselfTo(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public Entity[] readAllAdmissions() {
@@ -102,7 +85,6 @@ public class DBMS {
         int count = 0;
         Entity[] entities = new Entity[100];
         try (DataInputStream inputStream = new DataInputStream(new FileInputStream(fileName))) {
-//            inputStream.skipBytes(24 * 3);
             while (inputStream.available() >= entity.getSizeInBytes()) {
                 entity.loadYourselfFrom(inputStream);
                 entities[count++] = entity.getClone();
@@ -145,20 +127,12 @@ public class DBMS {
         return indices;
     }
 
-    public Index[] getPatientIndices() {
-        return patientIndexService.getIndices();
-    }
-
     public void savePatientIndices() {
         patientIndexService.saveToFile();
     }
 
     public void saveAdmissionsIndices() {
         admissionIndexService.saveToFile();
-    }
-
-    public Index[] getAddmissionIndices() {
-        return admissionIndexService.getIndices();
     }
 
     public Patient getPatient(int patientId) {

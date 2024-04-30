@@ -12,8 +12,6 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import com.calendarfx.view.CalendarView?>
 
-<!--<?import javafx.scene.control.cell.TextFieldTableCell?>-->
-
 <VBox alignment="TOP_CENTER" prefHeight="1075.0" prefWidth="1138.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.somihmih.HelloController">
     <padding>
         <Insets left="5.0" right="5.0" />
@@ -31,7 +29,6 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-<!--              <MenuItem mnemonicParsing="false" text="Patient" />-->
                 <Menu text="Patient">
                     <items>
                         <MenuItem onAction="#updatePatient" text="Update" />
@@ -41,11 +38,8 @@
                 </Menu>
             </items>
             <items>
-<!--              <MenuItem mnemonicParsing="false" text="Admission" />-->
                 <Menu text="Admission">
                     <items>
-<!--                        <MenuItem onAction="#updateAdmission" text="Update" />-->
-<!--                        <MenuItem onAction="#insertNewAdmission" text="Insert as new" />-->
                         <MenuItem onAction="#deleteAdmission" text="Delete" />
                     </items>
                 </Menu>
@@ -69,20 +63,11 @@
           </Menu>
         </menus>
       </MenuBar>
-   
-
-
 
        <HBox spacing="10">
       <children>
               <VBox spacing="10">
                  <children>
-                     <HBox spacing="10">
-                        <children>
-                            <Label fx:id="patientId">Id:</Label>
-                        </children>
-      <!--                   <TextField promptText="HBox 1 TextField" HBox.hgrow="ALWAYS"/>-->
-                     </HBox>
                      <HBox spacing="10">
                         <children>
                             <Label>Name:</Label>
@@ -107,8 +92,6 @@
                      </HBox>
                  </children>
               </VBox>
-   
-   <!--           <HBox fx:id="rightBox" alignment="CENTER_RIGHT">-->
                   <TableView fx:id="patientsTable" items="${controller.patientList}" maxWidth="-Infinity" prefHeight="200.0" prefWidth="374.0">
                       <columns>
                           <TableColumn text="Id">
@@ -128,14 +111,12 @@
                           </TableColumn>
                       </columns>
                   </TableView>
-   <!--           </HBox>-->
               <VBox spacing="10">
       <children>
                      <HBox spacing="10">
                         <children>
                             <Label>Filter by:</Label>
                         </children>
-                         <!--                   <TextField promptText="HBox 1 TextField" HBox.hgrow="ALWAYS"/>-->
                      </HBox>
                      <HBox spacing="10">
                         <children>
@@ -153,7 +134,6 @@
               </VBox>
       </children>
        </HBox>
-      <ListView id="list" fx:id="list" prefHeight="90.0" prefWidth="1128.0" />
       <ScrollPane fx:id="scrollGrid1" prefHeight="200.0" prefWidth="200.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
@@ -176,11 +156,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <DatePicker fx:id ="calendar2" prefWidth="200" prefHeight="30"  showWeekNumbers="true" onAction="#handleDateSelection" />
-
-
-
-
    </children>
     <CalendarView fx:id="calendarView" prefWidth="400" prefHeight="400"/>
 </VBox>
