@@ -100,6 +100,13 @@ public class HelloController {
                         if (patient == null) {
                             return;
                         }
+
+                        if (entry.getStartAsLocalDateTime().isBefore(LocalDateTime.now()) ) {
+                            entry.setHidden(true);
+                            entry.setTitle("Cannot add retroactively");
+                            return;
+                        }
+
                         dbService.insertAdmission(
                                 patient.getId(),
                                 getAdmissionFrom(entry, patient.getId())
