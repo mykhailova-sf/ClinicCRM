@@ -16,7 +16,6 @@ public class ClinicCrm extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1138, 990);
         stage.setTitle("Hello!");
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
