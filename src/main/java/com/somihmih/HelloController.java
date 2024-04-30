@@ -73,41 +73,30 @@ public class HelloController {
         updatePatientsList();
 
         calendarEventHandler = event -> {
-            System.out.println(" event ");
             CalendarEvent calendarEvent = (CalendarEvent) event;
             Entry<?> entry = calendarEvent.getEntry();
+            if (calendarEvent.getEventType().equals(CalendarEvent.ENTRY_INTERVAL_CHANGED)
+                    && (entry instanceof AdmissionEntry admissionEntry)
+            ) {
+                Admission admission = getAdmissionFrom(entry, admissionEntry.getAdmission().getPatientId());
+                dbService.updateAdmission(admission);
+            }
             if (calendarEvent.getEventType().equals(CalendarEvent.ENTRY_CALENDAR_CHANGED)) {
-                System.out.println(" изменение/добавление/удаление записи ");
-
-                if (calendarEvent.isEntryRemoved()) {
-                    System.out.println("Удаление entry");
-                    Admission admission = ((AdmissionEntry) entry).getAdmission();
+                if (calendarEvent.isEntryRemoved() && entry instanceof AdmissionEntry admissionEntry) {
+                    Admission admission = admissionEntry.getAdmission();
                     int id = admission.getId();
                     dbService.deleteAdmission(id, admission.getPatientId());
-                } else {
-
-                    Admission admission;
+                } else if (calendarEvent.isEntryAdded() && !(entry instanceof AdmissionEntry)) {
                     try {
-
-                        if (calendarEvent.isEntryAdded() && !(entry instanceof AdmissionEntry)) {
-                            System.out.println(" -- Добавление");
-                            Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
-                            if (patient == null) {
-                                System.out.println("Пациент не выбран");
-                                return;
-                            }
-                            admission = getAdmissionFrom(entry, patient.getId());
-                            dbService.insertAdmission(patient.getId(), admission);
-                            updateAdmissionsList();
-
-                        } else if (!calendarEvent.isEntryAdded() && entry instanceof AdmissionEntry) {
-                            System.out.println(" -- Обновление");
-                            admission = getAdmissionFrom(entry, ((AdmissionEntry) entry).getAdmission().getPatientId());
-                            dbService.updateAdmission(admission);
-                            updateAdmissionsList();
-                        } else {
-                            System.out.println(" --  ХЗ что делать");
+                        Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
+                        if (patient == null) {
+                            return;
                         }
+                        dbService.insertAdmission(
+                                patient.getId(),
+                                getAdmissionFrom(entry, patient.getId())
+                        );
+                        updateAdmissionsList();
                     } catch (IllegalArgumentException e) {
                         System.out.println(e.getMessage());
                     }
