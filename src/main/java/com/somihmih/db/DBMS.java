@@ -5,6 +5,8 @@ import com.somihmih.er.indexservice.Index;
 import com.somihmih.er.indexservice.IndexService;
 import com.somihmih.er.entity.Patient;
 import com.somihmih.er.entity.Entity;
+import com.somihmih.er.indexservice.IndexServiceWithLogs;
+import com.somihmih.er.indexservice.Indexes;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -12,6 +14,9 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class DBMS {
+
+    public static final String PATIENTS_INDEX_SERVICE = "PATIENTS";
+    public static final String ADMISSIONS_INDEX_SERVICE = "ADMISSION";
 
     private static DBMS instance;
 
@@ -28,15 +33,25 @@ public class DBMS {
     public static final String ADMISSION_INDEXES = "./dbfiles/addmissionIndexes";
     public static final String PATIENTS_INDEXES = "./dbfiles/patientsIndexes";
 
-    private final IndexService patientIndexService;
-    private final IndexService admissionIndexService;
+    private final Indexes patientIndexService;
+    private final Indexes admissionIndexService;
 
     private DBMS() {
-        patientIndexService = new IndexService(PATIENTS_INDEXES);
-        admissionIndexService = new IndexService(ADMISSION_INDEXES);
+        patientIndexService = DBMS.createIndexService(PATIENTS_INDEX_SERVICE);
+        admissionIndexService = DBMS.createIndexService(ADMISSIONS_INDEX_SERVICE);
         System.out.println("DBMS started");
     }
 
+    // 6. Simple Factory
+    public static Indexes createIndexService(String serviceName) {
+        if (serviceName.equals("PATIENTS")) {
+            return new IndexServiceWithLogs(new IndexService(PATIENTS_INDEXES), "Patients");
+        } else if (serviceName.equals("ADMISSION")) {
+            return new IndexService(ADMISSION_INDEXES);
+        }
+        // Other
+        return null;
+    }
     public void insertPatient(Patient patient) {
         Index index = patientIndexService.getNewIndex(); // Index:{patient-Id, position-In-Table, deleted-mark}
         patient.setId(index.getEntityId());
