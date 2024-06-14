@@ -56,7 +56,7 @@ public class UiController {
     private ClinicDbService dbService;
     @FXML
     public void initialize() {
-        this.dbService = new ClinicDbService(new DBMS());
+        this.dbService = new ClinicDbService(DBMS.getInstance());
         readPatientsFromDb();
         updatePatientsList();
 

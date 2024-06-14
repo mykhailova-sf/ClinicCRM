@@ -13,6 +13,16 @@ import java.util.Arrays;
 
 public class DBMS {
 
+    private static DBMS instance;
+
+    // For Singleton pattern
+    public static DBMS getInstance() {
+        if (instance == null) {
+            instance = new DBMS();
+        }
+        return instance;
+    }
+
     public static final String ADMISSIONS = "./dbfiles/addmissions";
     public static final String PATIENTS = "./dbfiles/patients";
     public static final String ADMISSION_INDEXES = "./dbfiles/addmissionIndexes";
@@ -20,7 +30,8 @@ public class DBMS {
 
     private final IndexService patientIndexService;
     private final IndexService admissionIndexService;
-    public DBMS() {
+
+    private DBMS() {
         patientIndexService = new IndexService(PATIENTS_INDEXES);
         admissionIndexService = new IndexService(ADMISSION_INDEXES);
         System.out.println("DBMS started");
