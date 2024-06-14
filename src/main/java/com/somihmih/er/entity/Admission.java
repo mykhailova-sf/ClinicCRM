@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class Admission implements Entity{
+public class Admission extends PrintableEntity implements Entity{
 
     public static final int ID_SIZE = Integer.BYTES;
     public static final int MAX_DATE_LEN = 22;
@@ -126,15 +126,18 @@ public class Admission implements Entity{
     }
 
     @Override
-    public String toString() {
-        return "Admission (" +
-                "id:" + id +
-                ", date:'" + date +
-                ", price:" + patientId +
-                ", nextAdId:" + nextAdId +
-                ((isDeleted()) ? ", DELETED" : "") +
-                ", description:" + description.trim() +
-                ')';
+    String getEntityType() {
+        return "Admission";
+    }
+
+    @Override
+    String[] getValuesToPrint() {
+        return new String[] {
+                "id:" + id,
+                "date:'" + date,
+                "price:" + patientId,
+                "nextAdId:" + nextAdId
+        };
     }
 
     @Override

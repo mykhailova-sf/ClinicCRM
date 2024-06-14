@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class Patient implements Entity {
+public class Patient extends PrintableEntity implements Entity {
 
     public static final int MAX_NAME_LEN = 30;
     public static final int MAX_NUMBER_LEN = 13;
@@ -98,15 +98,20 @@ public class Patient implements Entity {
     }
 
     @Override
-    public String toString() {
-        return "Patient (" +
-                "id=" + id +
-                ", name=" + name +
-                ", phoneNumber=" + phoneNumber +
-                ", addmissionId=" + admissionId +
-                ((isDeleted()) ? ", DELETED" : "") +
-                ')';
+    String getEntityType() {
+        return "Patient";
     }
+
+    @Override
+    String[] getValuesToPrint() {
+        return new String[] {
+                "id:" + id,
+                "name=" + name,
+                "phoneNumber=" + phoneNumber,
+                "addmissionId=" + admissionId
+        };
+    }
+
 
     @Override
     public int getSizeInBytes() {

@@ -92,6 +92,7 @@ public class DBMS {
         return  readFromFile(ADMISSIONS, new Admission());
     }
 
+    // Also example of using patter Template Method, but implicitly (loadYourselfFrom)
     private Entity[] readFromFile(String fileName, Entity entity) {
         int count = 0;
         Entity[] entities = new Entity[100];
@@ -106,6 +107,8 @@ public class DBMS {
 
         return Arrays.copyOfRange(entities, 0, count);
     }
+
+    // Also example of using patter Template Method, but implicitly (loadYourselfFrom)
     private Entity readFromFileOneEntity(String fileName, Entity entity, int position) {
         if (position < 0) {
             return null;
