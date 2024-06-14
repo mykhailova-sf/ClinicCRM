@@ -42,6 +42,7 @@ public class Admission extends PrintableEntity implements Entity{
         this(-1, date, patientId, -1, false);
     }
 
+    // 5. Example of pattern "Prototype"
     @Override
     public Admission getClone() {
         Admission admission = new Admission(id, date, patientId, nextAdId, deleted);
