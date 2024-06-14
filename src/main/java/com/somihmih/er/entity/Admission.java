@@ -4,6 +4,14 @@ import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.IOException;
 
+/**
+ * Admission entity
+ * @author SoMihMih
+ * @version 1.0
+ * @see Entity
+ * @see PrintableEntity
+ * {@inheritDoc}
+ */
 public class Admission extends PrintableEntity implements Entity{
 
     public static final int ID_SIZE = Integer.BYTES;
@@ -23,9 +31,20 @@ public class Admission extends PrintableEntity implements Entity{
     private String description = "";
     private int nextAdId = -1;
 
+    /**
+     * Constructor without params
+     */
     public Admission() {
     }
 
+    /**
+     * Constructor
+     * @param id id
+     * @param date date
+     * @param patientId patient id
+     * @param nextAdId next admission id
+     * @param deleted is deleted
+     */
     public Admission(int id, String date, int patientId, int nextAdId, boolean deleted) {
         this.id = id;
         this.date = date;
@@ -34,15 +53,31 @@ public class Admission extends PrintableEntity implements Entity{
         this.deleted = deleted;
     }
 
+    /**
+     *
+     * @param id
+     * @param date
+     * @param patientId
+     */
     public Admission(int id, String date, int patientId) {
         this(id, date, patientId, -1, false);
     }
 
+    /**
+     *
+     * @param date Date of admission
+     * @param patientId Who is admitted
+     */
     public Admission(String date, int patientId) {
         this(-1, date, patientId, -1, false);
     }
 
     // 5. Example of pattern "Prototype"
+
+    /**
+     *
+     * @return Returns a clone of the Admission
+     */
     @Override
     public Admission getClone() {
         Admission admission = new Admission(id, date, patientId, nextAdId, deleted);
@@ -84,6 +119,10 @@ public class Admission extends PrintableEntity implements Entity{
         this.nextAdId = nextAdId;
     }
 
+    /**
+     * Save itself (Admission) to output stream
+     * @param outputStream where entity will be saved
+     */
     @Override
     public void saveYourselfTo(DataOutput outputStream) {
 
@@ -107,6 +146,10 @@ public class Admission extends PrintableEntity implements Entity{
         }
     }
 
+    /**
+     * Load itself (Admission) from input stream
+     * @param inputStream input stream to load from
+     */
     @Override
     public void loadYourselfFrom(DataInputStream inputStream) {
         try {
