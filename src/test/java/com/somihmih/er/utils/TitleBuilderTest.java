@@ -12,11 +12,10 @@ class TitleBuilderTest {
     void testBuildTitleWhenNoPatient() {
         // given
         Admission admission = new Admission("2021-01-01", 1);
-        Patient patient = null;
-        TitleBuilder titleBuilder = new TitleBuilder();
+        TitleBuilder titleBuilder = new TitleBuilder(admission);
 
         // when
-        String title = titleBuilder.buildTitle(admission, patient);
+        String title = titleBuilder.buildTitle();
 
         // then
         assertEquals("Reserved time", title);
@@ -27,10 +26,10 @@ class TitleBuilderTest {
         // given
         Admission admission = new Admission("2021-01-01", 1);
         Patient patient = new Patient("John Doe", "123456789");
-        TitleBuilder titleBuilder = new TitleBuilder();
+        TitleBuilder titleBuilder = new TitleBuilder(admission);
 
         // when
-        String title = titleBuilder.buildTitle(admission, patient);
+        String title = titleBuilder.setPatient(patient).buildTitle();
 
         // then
         assertEquals("John Doe, tel: 123456789; ", title);

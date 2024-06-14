@@ -94,6 +94,7 @@ public class UiController {
                     try {
                         Patient patient = (Patient) patientsTable.getSelectionModel().getSelectedItem();
                         if (patient == null) {
+                            System.out.println("No selected patient");
                             return;
                         }
 
@@ -230,7 +231,7 @@ public class UiController {
             admissionsList.add(admission); // нужен ли нам грид старой версии?
             try {
                 Patient currentPatient = dbService.getPatient(admission.getPatientId());
-                String title = new TitleBuilder().buildTitle(admission, currentPatient);
+                String title = new TitleBuilder(admission).setPatient(currentPatient).buildTitle();
 
                 AdmissionEntry admissionEntry = new AdmissionEntry(admission, title.trim());
                 admissionEntry.setCalendar(calendar);
