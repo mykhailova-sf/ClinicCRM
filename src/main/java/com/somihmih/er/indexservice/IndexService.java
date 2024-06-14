@@ -3,7 +3,7 @@ package com.somihmih.er.indexservice;
 import java.io.*;
 import java.util.Arrays;
 
-public class IndexService {
+public class IndexService implements Indexes {
 
     public static final int POSITION_NUM_SIZE = Integer.BYTES;
     public static final int ENTITY_ID_SIZE = Integer.BYTES;
@@ -22,10 +22,12 @@ public class IndexService {
         loadIndexes();
     }
 
+    @Override
     public void saveToFile() {
         recreateIndexFile(Arrays.copyOfRange(indexes, 0, count));
     }
 
+    @Override
     public void loadIndexes() {
         indexes = new Index[MAX_COUNT];
         count = 0;
@@ -42,6 +44,7 @@ public class IndexService {
         }
     }
 
+    @Override
     public void recreateIndexFile(Index[] indices) {
         try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(fileName))) {
             for (Index index : indices) {
@@ -56,6 +59,7 @@ public class IndexService {
         loadIndexes();
     }
 
+    @Override
     public void addIndex(Index index) {
         if (index.getPos() == count) {
             indexes[count++] = new Index(index.getEntityId(), index.getPos(), index.isDeleted());
@@ -64,10 +68,12 @@ public class IndexService {
         }
     }
 
+    @Override
     public int getNewId() {
         return ++currentMaxIndex;
     }
 
+    @Override
     public Index getNewIndex() {
         int i = 0;
         while (i < count) {
@@ -80,12 +86,14 @@ public class IndexService {
         return new Index(getNewId(), count);
     }
 
+    @Override
     public int getPosition(int id) {
         Index index = getIndexFor(id);
 
         return (index != null) ? index.getPos() : -1 ;
     }
 
+    @Override
     public Index getIndexFor(int id) {
         for (Index index : indexes) {
 
