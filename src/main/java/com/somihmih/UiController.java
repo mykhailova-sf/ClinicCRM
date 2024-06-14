@@ -189,15 +189,14 @@ public class UiController {
         patientList.clear();
         String maskName = byName.getText();
         String maskPhone = byPhone.getText();
-        for (Patient patient : patients) {
-            String lowerCaseName = patient.getName().toLowerCase();
-            String lowerCasePhone = patient.getPhoneNumber().toLowerCase();
-            boolean isValidByName = maskName.isEmpty() || lowerCaseName.contains(maskName.toLowerCase());
-            boolean isValidByPhone = maskPhone.isEmpty() || lowerCasePhone.contains(maskPhone.toLowerCase());
-            if (isValidByName && isValidByPhone) {
-                patientList.add(patient);
-                System.out.println("fillPatientsList: " + patient);
-            }
+
+        // 7. Iterator pattern
+        IteratorForFilteredPatients iterator = new IteratorForFilteredPatients(maskName, maskPhone, patients);
+
+        while (iterator.hasNext()) {
+            Patient patient = iterator.next();
+            patientList.add(patient);
+            System.out.println("fillPatientsList: " + patient);
         }
     }
 
