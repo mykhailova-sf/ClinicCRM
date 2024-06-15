@@ -1,0 +1,23 @@
+@startuml
+|Admin|
+start
+:input 'patient's name and phone number';
+if(presses 'Update patient' button?) then(yes)
+|System|
+:shows updated information about patient in the table;
+|Admin|
+if(presses 'Insert as new patient' button?) then(yes)
+|System|
+:shows information about new added patient;
+|Admin|
+:enter name or phone in 'filter by';
+|System|
+:finds and shows info about patient in 'filter by';
+|Admin|
+:chooses patient name and date in calander for admission;
+note left
+    Admin can choose date and time, also can see schedule by __day, week, month, year__
+end note
+stop
+
+@enduml
