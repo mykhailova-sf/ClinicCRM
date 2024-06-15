@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor Admin_user as AU
+
+package AU_requests {
+  usecase "Edit patient's name or phone" as UC1
+  usecase "Add new patient in db" as UC2
+  usecase "Add new admission for patient" as UC3
+  usecase "Delete patient or admission for patient in db" as UC4
+}
+
+AU -[#blue]-> UC4
+AU -[#blue]-> UC1
+AU -[#blue]-> UC2
+AU -[#blue]-> UC3
+actor System as Sys
+
+usecase "responds to requests from Admin_user" as UC_Sys
+
+Sys --> UC_Sys
+
+UC_Sys -[#purple]-> UC1 : responds
+UC_Sys -[#purple]-> UC2 : responds
+UC_Sys -[#purple]-> UC3 : responds
+UC_Sys -[#purple]-> UC4 : responds
+
+@enduml
