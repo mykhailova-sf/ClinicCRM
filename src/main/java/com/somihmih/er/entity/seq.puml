@@ -1,6 +1,6 @@
 @startuml
 actor User_admin
-User -> UiController : Add_entity()
+User_admin -> UiController : Add_entity()
 UiController -> CliniqueService : insert_entity()
 CliniqueService -> DbService : insert_entity()
 DbService -> IndexService : get_new_index()
