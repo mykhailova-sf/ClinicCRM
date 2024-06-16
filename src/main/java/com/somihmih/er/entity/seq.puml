@@ -1,0 +1,20 @@
+@startuml
+actor User_admin
+User -> UiController : Add_entity()
+UiController -> CliniqueService : insert_entity()
+CliniqueService -> DbService : insert_entity()
+DbService -> IndexService : get_new_index()
+IndexService -> DbService : new_index()
+DbService -> DbService : save_to_db()
+DbService -> CliniqueService
+CliniqueService -> UiController
+UiController -> CliniqueService : readAllPatients()
+CliniqueService -> DbService : getAllPatients()
+DbService -> CliniqueService
+CliniqueService -> UiController
+UiController -> IteratorFilteredPatients : filter_patients()
+IteratorFilteredPatients -> UiController
+UiController -> UiController : show_patients()
+
+
+@enduml
