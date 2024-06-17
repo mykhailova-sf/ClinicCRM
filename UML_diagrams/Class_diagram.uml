@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.somihmih.er.entity.Admission</OriginalElement>
+  <nodes>
+    <node x="1517.0" y="-144.0">com.somihmih.er.entity.Patient</node>
+    <node x="445.0" y="-252.0">com.somihmih.db.DBMS</node>
+    <node x="3340.0" y="50.5">com.somihmih.er.utils.TitleBuilder</node>
+    <node x="-46.0" y="14.5">com.somihmih.er.indexservice.Index</node>
+    <node x="155.0" y="-21.5">com.somihmih.er.indexservice.Indexes</node>
+    <node x="2268.0" y="50.5">com.somihmih.IteratorForFilteredPatients</node>
+    <node x="1143.0" y="-105.5">com.somihmih.db.ClinicDbService</node>
+    <node x="811.0" y="-21.5">com.somihmih.er.entity.Entity</node>
+    <node x="2553.0" y="-168.0">com.somihmih.er.entity.Admission</node>
+    <node x="1869.0" y="26.5">com.somihmih.UiController</node>
+    <node x="3100.0" y="62.5">com.somihmih.entry.AdmissionEntry</node>
+    <node x="2905.0" y="62.5">com.somihmih.er.entity.PrintableEntity</node>
+    <node x="-351.0" y="-60.0">com.somihmih.er.indexservice.IndexService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.somihmih.er.utils.TitleBuilder" target="com.somihmih.er.entity.Patient" relationship="TO_ONE">
+      <point x="59.5" y="-43.5" />
+      <point x="3518.5" y="-233.0" />
+      <point x="1705.75" y="-233.0" />
+      <point x="37.75" y="-238.0" />
+    </edge>
+    <edge source="com.somihmih.er.entity.Patient" target="com.somihmih.er.entity.PrintableEntity" relationship="GENERALIZATION">
+      <point x="113.25" y="-238.0" />
+      <point x="1781.25" y="-203.0" />
+      <point x="2987.5" y="-203.0" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+    <edge source="com.somihmih.er.indexservice.IndexService" target="com.somihmih.er.indexservice.Index" relationship="CREATE">
+      <point x="120.0" y="-77.0" />
+      <point x="-76.0" y="17.0" />
+      <point x="-76.0" y="54.25" />
+      <point x="-85.5" y="-39.75" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.db.ClinicDbService" relationship="CREATE">
+      <point x="87.25" y="67.5" />
+      <point x="2130.75" y="362.0" />
+      <point x="1305.0" y="362.0" />
+      <point x="0.0" y="199.5" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.entry.AdmissionEntry" relationship="CREATE">
+      <point x="-43.625" y="-67.5" />
+      <point x="1999.875" y="-213.0" />
+      <point x="3205.0" y="-213.0" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+    <edge source="com.somihmih.IteratorForFilteredPatients" target="com.somihmih.er.entity.Patient" relationship="TO_MANY">
+      <point x="0.0" y="43.5" />
+      <point x="2395.5" y="352.0" />
+      <point x="1668.0" y="352.0" />
+      <point x="0.0" y="238.0" />
+    </edge>
+    <edge source="com.somihmih.er.indexservice.IndexService" target="com.somihmih.er.indexservice.Indexes" relationship="REALIZATION">
+      <point x="0.0" y="154.0" />
+      <point x="-231.0" y="258.0" />
+      <point x="275.0" y="258.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.er.entity.Admission" relationship="TO_MANY">
+      <point x="130.875" y="-67.5" />
+      <point x="2174.375" y="-183.0" />
+      <point x="2628.5" y="-183.0" />
+      <point x="-75.5" y="-262.0" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.entity.Entity" relationship="CREATE">
+      <point x="158.0" y="-0.0" />
+      <point x="-151.0" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.entity.Patient" relationship="CREATE">
+      <point x="39.5" y="-346.0" />
+      <point x="642.5" y="-287.0" />
+      <point x="1630.25" y="-287.0" />
+      <point x="-37.75" y="-238.0" />
+    </edge>
+    <edge source="com.somihmih.db.ClinicDbService" target="com.somihmih.db.DBMS" relationship="TO_ONE">
+      <point x="0.0" y="-199.5" />
+      <point x="1305.0" y="-267.0" />
+      <point x="721.5" y="-267.0" />
+      <point x="118.5" y="-346.0" />
+    </edge>
+    <edge source="com.somihmih.er.entity.Admission" target="com.somihmih.er.entity.Entity" relationship="REALIZATION">
+      <point x="-37.75" y="262.0" />
+      <point x="2666.25" y="382.0" />
+      <point x="962.0" y="382.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.somihmih.db.ClinicDbService" target="com.somihmih.er.entity.Patient" relationship="CREATE">
+      <point x="162.0" y="-0.0" />
+      <point x="-151.0" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.er.entity.Patient" target="com.somihmih.er.entity.Entity" relationship="REALIZATION">
+      <point x="-113.25" y="-238.0" />
+      <point x="1554.75" y="-277.0" />
+      <point x="962.0" y="-277.0" />
+      <point x="0.0" y="-115.5" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.er.entity.Admission" relationship="CREATE">
+      <point x="43.625" y="-67.5" />
+      <point x="2087.125" y="-193.0" />
+      <point x="2779.5" y="-193.0" />
+      <point x="75.5" y="-262.0" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.indexservice.Index" relationship="CREATE">
+      <point x="-118.5" y="-346.0" />
+      <point x="484.5" y="-262.0" />
+      <point x="39.5" y="-262.0" />
+      <point x="0.0" y="-79.5" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.indexservice.IndexService" relationship="CREATE">
+      <point x="-39.5" y="-346.0" />
+      <point x="563.5" y="-272.0" />
+      <point x="-231.0" y="-272.0" />
+      <point x="0.0" y="-154.0" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.er.entity.Patient" relationship="TO_MANY">
+      <point x="-174.5" y="-0.0" />
+      <point x="151.0" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.er.utils.TitleBuilder" target="com.somihmih.er.entity.Admission" relationship="TO_ONE">
+      <point x="0.0" y="43.5" />
+      <point x="3459.0" y="371.0" />
+      <point x="2817.25" y="371.0" />
+      <point x="113.25" y="262.0" />
+    </edge>
+    <edge source="com.somihmih.er.indexservice.IndexService" target="com.somihmih.er.indexservice.Index" relationship="TO_MANY">
+      <point x="120.0" y="77.0" />
+      <point x="-86.0" y="171.0" />
+      <point x="-86.0" y="133.75" />
+      <point x="-85.5" y="39.75" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.db.ClinicDbService" relationship="TO_ONE">
+      <point x="-87.25" y="67.5" />
+      <point x="1956.25" y="342.0" />
+      <point x="1413.0" y="342.0" />
+      <point x="108.0" y="199.5" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.er.utils.TitleBuilder" relationship="CREATE">
+      <point x="-130.875" y="-67.5" />
+      <point x="1912.625" y="-223.0" />
+      <point x="3399.5" y="-223.0" />
+      <point x="-59.5" y="-43.5" />
+    </edge>
+    <edge source="com.somihmih.er.entity.Admission" target="com.somihmih.er.entity.PrintableEntity" relationship="GENERALIZATION">
+      <point x="151.0" y="-0.0" />
+      <point x="-82.5" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.indexservice.Indexes" relationship="TO_ONE">
+      <point x="-158.0" y="-0.0" />
+      <point x="120.0" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.UiController" target="com.somihmih.IteratorForFilteredPatients" relationship="CREATE">
+      <point x="174.5" y="-0.0" />
+      <point x="-127.5" y="-0.0" />
+    </edge>
+    <edge source="com.somihmih.db.ClinicDbService" target="com.somihmih.er.entity.Admission" relationship="CREATE">
+      <point x="-108.0" y="199.5" />
+      <point x="1197.0" y="372.0" />
+      <point x="2590.75" y="372.0" />
+      <point x="-113.25" y="262.0" />
+    </edge>
+    <edge source="com.somihmih.db.DBMS" target="com.somihmih.er.entity.Admission" relationship="CREATE">
+      <point x="0.0" y="346.0" />
+      <point x="603.0" y="450.0" />
+      <point x="2741.75" y="450.0" />
+      <point x="37.75" y="262.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.4412381117080426" showDependencies="true" x="1221.4450087737987" y="73.39367788908658" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
