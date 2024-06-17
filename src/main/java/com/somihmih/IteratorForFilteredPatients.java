@@ -5,6 +5,17 @@ import com.somihmih.er.entity.Patient;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * IteratorForFilteredPatients
+ * @author SoMihMih
+ * @version 1.0
+ * @see IteratorForFilteredPatients
+ * {@inheritDoc}
+ */
+
+/**
+ * For Iterator pattern
+ */
 public class IteratorForFilteredPatients implements Iterator<Patient> {
 
     private final String maskName;

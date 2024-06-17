@@ -23,6 +23,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * UiController
+ * @author SoMihMih
+ * @version 1.0
+ * @see UiController
+ * {@inheritDoc}
+ */
+
 public class UiController {
 
     @FXML
@@ -190,7 +198,9 @@ public class UiController {
         String maskName = byName.getText();
         String maskPhone = byPhone.getText();
 
-        // 7. Iterator pattern
+        /**
+         * Iterator pattern
+         */
         IteratorForFilteredPatients iterator = new IteratorForFilteredPatients(maskName, maskPhone, patients);
 
         while (iterator.hasNext()) {
@@ -226,8 +236,11 @@ public class UiController {
 
         calendarView.getCalendarSources().add(calendarSource);
 
+        /**
+         * For Builder pattern
+         */
         for (Admission admission : admissions) {
-            admissionsList.add(admission); // нужен ли нам грид старой версии?
+            admissionsList.add(admission);
             try {
                 Patient currentPatient = dbService.getPatient(admission.getPatientId());
                 String title = new TitleBuilder(admission).setPatient(currentPatient).buildTitle();

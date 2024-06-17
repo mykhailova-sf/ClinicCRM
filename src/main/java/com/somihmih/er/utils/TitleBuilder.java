@@ -3,7 +3,19 @@ package com.somihmih.er.utils;
 import com.somihmih.er.entity.Admission;
 import com.somihmih.er.entity.Patient;
 
-// 2. TitleBuilder via Builder pattern
+
+/**
+ * TitleBuilder
+ * @author SoMihMih
+ * @version 1.0
+ * @see TitleBuilder
+ * {@inheritDoc}
+ * {@inheritDoc}
+ */
+
+/**
+ * TitleBuilder via Builder pattern
+ */
 public class TitleBuilder {
 
     private final Admission admission;

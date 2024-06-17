@@ -3,6 +3,18 @@ package com.somihmih.er.indexservice;
 import java.io.*;
 import java.util.Arrays;
 
+/**
+ * IndexService implements Indexes
+ * @author SoMihMih
+ * @version 1.0
+ * @see IndexService
+ * {@inheritDoc}
+ */
+
+/**
+ * IndexService implements Indexes
+ */
+
 public class IndexService implements Indexes {
 
     public static final int POSITION_NUM_SIZE = Integer.BYTES;

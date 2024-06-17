@@ -1,6 +1,16 @@
 package com.somihmih.er.indexservice;
 
-// 3. IndexServiceWithLogs via Decorator pattern
+/**
+ * IndexServiceWithLogs implements Indexes
+ * @author SoMihMih
+ * @version 1.0
+ * @see IndexServiceWithLogs
+ * {@inheritDoc}
+ */
+
+/**
+ * IndexServiceWithLogs via Decorator pattern
+ */
 public class IndexServiceWithLogs implements Indexes {
 
     private final String name;

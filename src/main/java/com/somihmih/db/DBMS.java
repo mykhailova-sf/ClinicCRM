@@ -13,14 +13,26 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+/**
+ * DBMS
+ * @author SoMihMih
+ * @version 1.0
+ * @see DBMS
+ * {@inheritDoc}
+ */
+
 public class DBMS {
 
     public static final String PATIENTS_INDEX_SERVICE = "PATIENTS";
     public static final String ADMISSIONS_INDEX_SERVICE = "ADMISSION";
 
+
     private static DBMS instance;
 
-    // For Singleton pattern
+    /**
+     * For Singleton pattern
+     * @return DBMS if it exists, else already existing DBMS
+     */
     public static DBMS getInstance() {
         if (instance == null) {
             instance = new DBMS();
@@ -42,7 +54,11 @@ public class DBMS {
         System.out.println("DBMS started");
     }
 
-    // 6. Simple Factory
+    /**
+     * Simple Factory pattern
+     * @param serviceName
+     * @return PATIENTS_INDEXES or ADMISSION_INDEXES
+     */
     public static Indexes createIndexService(String serviceName) {
         if (serviceName.equals("PATIENTS")) {
             return new IndexServiceWithLogs(new IndexService(PATIENTS_INDEXES), "Patients");
@@ -52,6 +68,7 @@ public class DBMS {
         // Other
         return null;
     }
+
     public void insertPatient(Patient patient) {
         Index index = patientIndexService.getNewIndex(); // Index:{patient-Id, position-In-Table, deleted-mark}
         patient.setId(index.getEntityId());
@@ -107,7 +124,12 @@ public class DBMS {
         return  readFromFile(ADMISSIONS, new Admission());
     }
 
-    // Also example of using patter Template Method, but implicitly (loadYourselfFrom)
+    /**
+     * Also example of using patter Template Method, but implicitly (loadYourselfFrom)
+     * @param fileName
+     * @param entity
+     * @return array of entity(patient or admission) from 0 to count
+     */
     private Entity[] readFromFile(String fileName, Entity entity) {
         int count = 0;
         Entity[] entities = new Entity[100];
@@ -123,7 +145,13 @@ public class DBMS {
         return Arrays.copyOfRange(entities, 0, count);
     }
 
-    // Also example of using patter Template Method, but implicitly (loadYourselfFrom)
+    /**
+     *  Also example of using patter Template Method, but implicitly (loadYourselfFrom)
+     * @param fileName
+     * @param entity
+     * @param position
+     * @return one entity(patient or admission) from file
+     */
     private Entity readFromFileOneEntity(String fileName, Entity entity, int position) {
         if (position < 0) {
             return null;

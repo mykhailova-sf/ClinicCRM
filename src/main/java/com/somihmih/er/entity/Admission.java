@@ -72,10 +72,8 @@ public class Admission extends PrintableEntity implements Entity{
         this(-1, date, patientId, -1, false);
     }
 
-    // 5. Example of pattern "Prototype"
-
     /**
-     *
+     * Example of pattern "Prototype"
      * @return Returns a clone of the Admission
      */
     @Override
@@ -169,11 +167,18 @@ public class Admission extends PrintableEntity implements Entity{
         }
     }
 
+    /**
+     * For pattern Template method
+     * @return
+     */
     @Override
     String getEntityType() {
         return "Admission";
     }
-
+    /**
+     * For pattern Template method
+     * @return
+     */
     @Override
     String[] getValuesToPrint() {
         return new String[] {

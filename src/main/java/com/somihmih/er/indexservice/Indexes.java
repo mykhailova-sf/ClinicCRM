@@ -1,5 +1,17 @@
 package com.somihmih.er.indexservice;
 
+/**
+ * Indexes
+ * @author SoMihMih
+ * @version 1.0
+ * @see com.somihmih.er.indexservice.Indexes
+ * {@inheritDoc}
+ */
+
+/**
+ * Indexes interface (For IndexService and IndexServiceWithLogs)
+ */
+
 public interface Indexes {
     void saveToFile();
 
